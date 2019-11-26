@@ -86,7 +86,9 @@ def get_message(data, bpm, samplerate, frequency):
         if fftabs[idx] >= 30000000:
             binary.append(1)
         else:
-            binary.append(0)
+            # Ignore all consecutive zeros in the beginning of the song.
+            if len(binary) != 1 or binary[0] == 1:
+                binary.append(0)
 
         # Check for every even number of possible ASCII characters and assume
         # at least 3 (6) characters.
