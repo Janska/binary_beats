@@ -112,6 +112,7 @@ def get_message(data, bpm, samplerate, frequency):
 
 
 if __name__ == "__main__":
+    import os
     import sys
 
     if len(sys.argv) != 2:
@@ -128,8 +129,9 @@ Options:
         sys.exit(1)
 
     f = sys.argv[1]
+    fname = os.path.basename(f)
     samplerate, data = wavfile.read(f)
-    print(f"Trying to find the hidden message in song '{f}'...")
+    print(f"Trying to find the hidden message in song '{fname}'...")
     bpm = calculate_bpm(f, samplerate)
     i = 0
     while i < 10:  # Bruteforcing is bad.
