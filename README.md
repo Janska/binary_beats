@@ -1,4 +1,4 @@
-# music-message-analyzer
+# binary-beats
 
 Will scan your music for hidden messages!
 
